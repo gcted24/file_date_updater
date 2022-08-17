@@ -1,0 +1,14 @@
+#Get-ChildItem -force -Recurse ".\test" * | ForEach-Object{$_.LastWriteTime = $_.LastWriteTime.addYears(-30)}
+Get-ChildItem -force -Recurse ".\test" * | ForEach-Object{
+	$Value = (Get-Date).Year - $_.LastWriteTime.Year
+	if ($_.LastWriteTime.Year -lt (Get-Date).Year - 3)
+	{
+		$new_date = $_.LastWriteTime.addYears($Value)
+		$old_date = $_.LastWriteTime
+		$_.LastWriteTime = $new_date
+		$string = $_.Name
+		$path = $_.Directory
+		$combined = $string + "`t" + $old_date + "`t" + $new_date
+		echo $combined >> "file_list.txt"
+	}
+}
