@@ -6,6 +6,7 @@ Featues
 3. Will update every file and folder recursively
 4. Doesn't touch the highest folder directoy, but everything within that top folder
 5. For every change that is made, an entry into a text document is made. The document can be found in the folder in which you run the script from.
+6. Does not touch files that do not match the date criteria
 
 Permission
 1. Windows only compatiable
